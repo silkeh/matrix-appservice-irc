@@ -427,7 +427,7 @@ export class ClientPool {
         // the timeout below holds it in a closure, preventing it from being GC'd.
         (bridgedClient as unknown) = undefined;
 
-        if (chanList.length === 0) {
+        if (!cli.isBot && chanList.length === 0) {
             log.info(`Dropping ${cli.id} ${cli.nick} because they are not joined to any channels`);
             return;
         }
